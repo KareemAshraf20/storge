@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storge</title>
+    <style>
+        .div_1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50px;
+        }
+
+        .div_2 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border-radius: 50px;
+        }
+
+        .div_3 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            border-radius: 50px;
+        }
+
+        .div_4 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            border-radius: 50px;
+        }
+
+        .div_5 {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            border-radius: 50px;
+        }
+
+        .div_6 {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            border-radius: 50px;
+        }
+
+        .div_1,
+        .div_2,
+        .div_3,
+        .div_4,
+        .div_5,
+        .div_6 {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        #main {
+            background-color: rgb(81, 182, 182);
+            width: 650px;
+            height: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div_1"></div>
+    <div class="div_2"></div>
+    <div class="div_3"></div>
+    <div class="div_4"></div>
+    <div class="div_5"></div>
+    <div class="div_6"></div>
+
+    <div id="main"></div>
+    <script>
+        let colorDivs = document.querySelectorAll(".div_1, .div_2,.div_3,.div_4,.div_5,.div_6");
+        let mainDiv = document.getElementById('main');
+
+        colorDivs.forEach(function (div) {
+            div.addEventListener("click", function (event) {
+                let newColor = window.getComputedStyle(div).getPropertyValue("background-color");
+                window.localStorage.setItem("color", newColor);
+                mainDiv.style.backgroundColor = newColor;
+            });
+        });
+
+        let storedColor = window.localStorage.getItem("color");
+        if (storedColor) {
+            mainDiv.style.backgroundColor = storedColor;
+        }
+    </script>
+</body>
+
+</html>
